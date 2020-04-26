@@ -26,6 +26,8 @@ services:
     image: dracoblue/jolokia-metrics-exporter
     env_file:
       - .env
+    volumes:
+      - './config.yaml:/usr/src/app/config.yaml'
     ports:
       - "9442:9442"
 ```
