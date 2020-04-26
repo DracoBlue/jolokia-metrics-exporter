@@ -1,0 +1,26 @@
+{
+  "name": "jolokia-metrics-exporter",
+  "description": "A prometheus exporter for jolokia endpoints",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DracoBlue/jolokia-metrics-exporter.git"
+  },
+  "author": "DracoBlue <JanS@DracoBlue.de>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DracoBlue/jolokia-metrics-exporter/issues"
+  },
+  "homepage": "https://github.com/DracoBlue/jolokia-metrics-exporter#readme",
+  "dependencies": {
+    "debug": "^4.1.1",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "got": "^11.0.2",
+    "yaml": "^1.9.2"
+  }
+}
