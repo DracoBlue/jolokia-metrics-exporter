@@ -11,7 +11,7 @@ const got = require('got').extend({
 });
 
 
-const configFileContent = fs.readFileSync(process.env.CONFIG_YML || '/opt/jolokia-metrics-exporter/config.yaml', 'utf8');
+const configFileContent = fs.readFileSync(process.env.CONFIG_YML || '/usr/src/app/config.yaml', 'utf8');
 const config = YAML.parse(configFileContent);
 
 debug('launch request');
