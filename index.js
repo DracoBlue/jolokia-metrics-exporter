@@ -17,7 +17,7 @@ const config = YAML.parse(configFileContent);
 debug('launch request');
 
 class Rule {
-  constructor({rawString, mbeanClass, mbeanPath, filter, labels, attribute, overrideValue, help, type, name, attrNameSnakeCase}) {
+  constructor({rawString, mbeanClass, mbeanPath, filter, labels, attribute, overrideValue, valueFactor, help, type, name, attrNameSnakeCase}) {
     this.rawString = rawString;
     this.mbeanClass = mbeanClass;
     this.mbeanPath = mbeanPath;
@@ -29,6 +29,7 @@ class Rule {
     this.labels = labels || {};
     this.filter = filter || {};
     this.overrideValue = overrideValue;
+    this.valueFactor = valueFactor;
 
     if (this.attribute.indexOf('/') !== -1) {
       this.path = this.attribute.split('/').slice(0, -1).join('/');
@@ -133,6 +134,9 @@ class Rule {
           if (typeof overrideValue === "undefined") {
             overrideValue = matchedValue.value;
           }
+          if (typeof this.valueFactor !== "undefined") {
+            overrideValue = this.valueFactor * overrideValue;
+          }
           if (labelsSuffixParts.length > 0) {
             lines.push(name + '{' + labelsSuffixParts.join(",") + '} ' + overrideValue);
           } else {
@@ -152,7 +156,7 @@ const convertRuleConfigToRule = (ruleConfig) =>  {
   }
   [rawString, mbeanClass, mbeanPath, attribute] = patternMatch;
 
-  return new Rule({rawString, mbeanClass, mbeanPath, attribute, overrideValue: ruleConfig.overrideValue, filter: ruleConfig.filter, labels: ruleConfig.labels, help: ruleConfig.help, name: ruleConfig.name, type: ruleConfig.type,
+  return new Rule({rawString, mbeanClass, mbeanPath, attribute, overrideValue: ruleConfig.value, valueFactor: ruleConfig.valueFactor, filter: ruleConfig.filter, labels: ruleConfig.labels, help: ruleConfig.help, name: ruleConfig.name, type: ruleConfig.type,
 attrNameSnakeCase: ruleConfig.attrNameSnakeCase || false});
 }
 

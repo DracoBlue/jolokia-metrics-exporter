@@ -56,7 +56,7 @@ This file should work for most JVM installations and expose the values properly 
     help: Heap memory $1 usage
   - pattern: java.lang<type=Runtime><>SpecVersion
     name: java_lang_runtime_spec_version
-    overrideValue: 1
+    value: 1
     labels:
       "version": $0
     type: GAUGE
