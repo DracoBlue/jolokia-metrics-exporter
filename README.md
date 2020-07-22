@@ -47,7 +47,7 @@ This file should work for most JVM installations and expose the values properly 
     attrNameSnakeCase: true
     type: GAUGE
     labels:
-      $1: $0
+      "type": $1
     help: Java's $1
   - pattern: java.lang<type=Memory><>HeapMemoryUsage/(.+)
     name: java_lang_heap_memory_usage_$1
@@ -83,9 +83,9 @@ java_lang_threading_peak_thread_count 154
 java_lang_threading_daemon_thread_count 88
 # HELP java_lang_threading_thread_count Java's TotalStartedThreadCount
 # TYPE java_lang_threading_thread_count gauge
-java_lang_threading_thread_count{TotalStartedThreadCount="22139"} 22139
-java_lang_threading_thread_count{PeakThreadCount="154"} 154
-java_lang_threading_thread_count{DaemonThreadCount="88"} 88
+java_lang_threading_thread_count{type="TotalStartedThreadCount"} 22139
+java_lang_threading_thread_count{type="PeakThreadCount"} 154
+java_lang_threading_thread_count{type="DaemonThreadCount"} 88
 # HELP java_lang_heap_memory_usage_init Heap memory init usage
 # TYPE java_lang_heap_memory_usage_init gauge
 java_lang_heap_memory_usage_init 494927872
