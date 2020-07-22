@@ -178,6 +178,12 @@ const getMetrics = () => {
     debug('jolokiaResponse', jolokiaResponse);
     rules.forEach((rule, pos) => {
        debug('response', rule, jolokiaResponse[pos]);
+
+       if (jolokiaResponse[pos].stacktrace) {
+         debug('error response', jolokiaResponse[pos].stacktrace);
+         return;
+       }
+
        rule.getPrometheusLinesForJolokiaResponse(jolokiaResponse[pos]).forEach((line) => {
          debug('line', line);
          lines.push(line);
