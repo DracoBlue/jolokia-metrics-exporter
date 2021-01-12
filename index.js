@@ -7,7 +7,10 @@ const YAML = require('yaml');
 const got = require('got').extend({
   username: process.env.USERNAME,
   password: process.env.PASSWORD,
-  prefixUrl: process.env.JOLOKIA_URL
+  prefixUrl: process.env.JOLOKIA_URL,
+  https: {
+			rejectUnauthorized: false
+	}
 });
 
 
